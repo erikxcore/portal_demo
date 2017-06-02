@@ -27,7 +27,8 @@ const paths = {
   css: `${dirs.src}/css/**`,
   pug: `${dirs.src}/pug/**`,
   js: `${dirs.src}/js/**`,
-  babel: `${dirs.src}/js/**/*.js`,
+  json: `${dirs.src}/*.json`,
+  babel: `${dirs.src}/js/**/*`, //Should pick up both JS and JSX
   html: `${dirs.src}/html/**/*`
 };
 
@@ -76,6 +77,10 @@ gulp.task('copy_css', () => {
 
 gulp.task('copy_js', () => {
   return gulp.src([paths.js]).pipe(gulp.dest(`${dirs.dest}/js`));
+});
+
+gulp.task('copy_json', () => {
+  return gulp.src([paths.json]).pipe(gulp.dest(`${dirs.dest}`));
 });
 
 gulp.task('babel', () => {
@@ -135,12 +140,17 @@ gulp.task('js:watch', () => {
   gulp.watch(paths.js, ['copy_js']);
 });
 
+gulp.task('json:watch', () => {
+  gulp.watch(paths.json, ['copy_json']);
+});
+
 gulp.task('watch:babel', () => {
   gulp.watch(paths.babel, ['build']);
   gulp.watch(paths.pug, ['pug']);
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.images, ['images']);
   gulp.watch(paths.html, ['copy_html']);
+  gulp.watch(paths.json, ['copy_json']);
   gulp.watch(paths.css, ['copy_css']);
 });
 
@@ -149,6 +159,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.images, ['images']);
   gulp.watch(paths.html, ['copy_html']);
   gulp.watch(paths.js, ['copy_js']);
+  gulp.watch(paths.json, ['copy_json']);
   gulp.watch(paths.css, ['copy_css']);
 });
 
@@ -161,9 +172,9 @@ gulp.task('webserver', ['watch:babel'], () => {
     }));
 });
 
-gulp.task('dirty_build', ['lodash','jquery','icons','bootstrap-icons','bootstrap-js','copy_html','copy_css','copy_js','sass', 'images']);
+gulp.task('dirty_build', ['lodash','jquery','icons','bootstrap-icons','bootstrap-js','copy_html','copy_css','copy_js','copy_json','sass', 'images']);
 
-gulp.task('dirty_build_babel', ['icons','bootstrap-icons','copy_html','babel','sass','pug','images']);
+gulp.task('dirty_build_babel', ['icons','bootstrap-icons','copy_html','copy_json','babel','sass','pug','images']);
 
 gulp.task('noes6', ['clean'], () => {
   gulp.start('dirty_build');

@@ -1,7 +1,9 @@
-<h2>Another skeleton in the closet</h2>
+<h2>Mediacom Portal</h2>
 
-This is just a frontend skeleton for kickstarting projects that will be using Gulp/Babel (ES 2015) + Browserify/SASS/Jasmine/PUG.<br />
-Also included is lodash/jQuery/Bootstrap/Font Awesome ~~via Bower~~*.<br />
+This project is for phase 1 of the internal facing portal. Phase 2 will involve a migration into a CMS system such as the Drupal based Open Atrium product. Migration should be fairly simple though may require the removal of React & JSON components in favor of a more database orientated approach.
+
+This is based on a frontend skeleton using Gulp/Babel (ES 2015) + Browserify/SASS/Jasmine/PUG. Most likely Jasmine will not be used for this project.<br />
+Also included is lodash/jQuery/Bootstrap/Font Awesome<br />
 Yarn has been included for the option to *not* use NPM.<br />
 
 There are two ways to use this skeleton:<br />
@@ -48,5 +50,3 @@ Prerequisites:<br/>
 [Node/NPM](https://nodejs.org/en/)<br />
 [Git](https://github.com)
 <br/>
-
-*Bower is being depreciated.*
