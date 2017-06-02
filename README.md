@@ -6,7 +6,10 @@ This is based on a frontend skeleton using Gulp/Babel (ES 2015) + Browserify/SAS
 Also included is lodash/jQuery/Bootstrap/Font Awesome<br />
 Yarn has been included for the option to *not* use NPM.<br />
 
-There are two ways to use this skeleton:<br />
+For deployment, the /build folder can be used directly. Or, if preferred, the project can be cloned and then 'npm start' may be ran to generate a new 'build'.
+<br />
+
+There are two ways to use this:<br />
 <h4>Method 1 (Retains /build)</h4>
 
 ```

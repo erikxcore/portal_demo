@@ -6,17 +6,16 @@ window.jQuery = window.$ = $;
 require('../../node_modules/bootstrap-sass/assets/javascripts/bootstrap');
 jQuery.noConflict(true);
 
-import { whatsMyName } from './extra';
+//import { whatsMyName } from './extra';
 
-
-
-console.log("Checking if imported file is working...");
-console.log(whatsMyName());
+//console.log("Checking if imported file is working...");
+//console.log(whatsMyName());
 
 //jQuery test
+/*
 let bodyText = '<h2>Goodbye Moon!</h2>';
 $('.container h1:first').append(bodyText);
+*/
 
-const bootstrap3_enabled = (typeof $().emulateTransitionEnd == 'function');
-
-console.log("Bootstrap enabled? " + bootstrap3_enabled);
+//const bootstrap3_enabled = (typeof $().emulateTransitionEnd == 'function');
+//console.log("Bootstrap enabled? " + bootstrap3_enabled);

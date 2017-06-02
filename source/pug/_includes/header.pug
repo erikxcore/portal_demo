@@ -1,0 +1,26 @@
+nav.navbar.navbar-default.navbar-fixed-top
+	.container
+		.navbear-header
+			button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar')
+			a.navbar-brand(href='#') Portal
+		#navbar.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				li.active
+					a(href='#') Home
+				li
+					a(href='#') Archive
+				li
+					a(href='#') Information
+				li
+					a(href='#') Policies
+				li.dropdown
+					a.dropdown-toggle(href='#' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false') Dropdown <span class="caret"></span>
+					ul.dropdown-menu
+						li
+							a(href='#') Something Else
+						li
+							a(href='#') Something Other
+						li.divider(role='seperator')
+						li.dropdown-header Test
+						li
+							a(href='#') Seperated Link

@@ -3,19 +3,11 @@ extends _extends/layout.pug
 block content
   #content.container
     .col-xs-12
-      include _components/content_head.pug
-      - var pets = ['cat', 'dog']
-      - var title = "Pug Demo"
-      h1= title
-      
-      ul
-        each petName in pets
-          li= petName
+      //h1 Welcome #[i(aria-hidden="true").fa.fa-bandcamp]
 
-      #container.col
-          p.pugDescription.
-            Pug is a terse and simple templating language with a
-            strong focus on performance and powerful features.
-          img.className#IdName(src='http://placehold.it/350x150' alt='Image Title')
-          br
-          a(href='index.html') View HTML Version
+      #main.col-xs-8
+          #posts
+            .fa.fa-spinner.fa-spin.fa-3x
+
+      include _includes/sidepanel.pug
+      script(src="js/home.jsx" type='text/javascript')

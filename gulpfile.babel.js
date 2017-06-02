@@ -89,7 +89,7 @@ gulp.task('babel', () => {
       file.contents = browserify(file.path, {
         debug: true
       }).transform(babel, {
-        presets: [ 'es2015' ]
+        presets: [ 'es2015', 'react']
       }).bundle();
     }))
     .pipe(buffer())
@@ -145,7 +145,7 @@ gulp.task('json:watch', () => {
 });
 
 gulp.task('watch:babel', () => {
-  gulp.watch(paths.babel, ['build']);
+  gulp.watch(paths.babel, ['babel']);
   gulp.watch(paths.pug, ['pug']);
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.images, ['images']);

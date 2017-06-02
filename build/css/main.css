@@ -1693,3 +1693,34 @@ USAGE:
 
 .transparent-text {
   color: transparent !important; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px; }
+
+body > .container {
+  padding: 60px 15px 0; }
+
+.footer-copyright {
+  font-family: "Avenir LT W01_65 Medium1475532", "Avenir LT W01_65 Medium1475538", "Lato", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 0px; }
+
+footer {
+  background: #07356A;
+  padding-top: 1rem;
+  padding-left: 1rem; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px; }
