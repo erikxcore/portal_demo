@@ -1,10 +1,6 @@
 import React from '../../node_modules/react';
 import ReactDOM from '../../node_modules/react-dom';
-import allPosts from '../posts.json';
-//console.log(allPosts);
-
-//TO DO:
-//On archive page, paginate 5 posts per page.
+import axios from '../../node_modules/axios';
 
 class HomeNews extends React.Component {
 
@@ -14,17 +10,29 @@ class HomeNews extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({
-            posts: allPosts.Posts
-    });
-    if(allPosts.Posts.length > 2){
-    	this.setState({
-            more: true
-    	});
-    }
+  var self = this;
+  this.serverRequest = 
+      axios
+        .get("./php/api/RestController.php?view=all")
+        .then(function(result) {
+          result.data.Posts.reverse(); //Newest order
+          let more = false;
+          if(result.data.Posts.length > 2){
+            more = true;
+          }
+            self.setState({
+                    posts: result.data.Posts,
+                    more: more
+            });
+        });
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return nextState.posts !== this.state.posts;
   }
 
  componentWillUnmount(){
+    this.serverRequest.abort();
     this.setState({
             posts: [],
             more: false
@@ -44,7 +52,7 @@ class HomeNews extends React.Component {
 	              <br/>
 	              <p>
 	              	{
-	              		post.Content.split('\n').map((item, key) => {
+	              		post.Content.split('\\\n').map((item, key) => {
 						  return <span key={key}>{item}<br/></span>
 						})
 	              	}
