@@ -1,7 +1,7 @@
-import React from '../../node_modules/react';
-import ReactDOM from '../../node_modules/react-dom';
-import axios from '../../node_modules/axios';
-import Pagination from "../../node_modules/react-js-pagination";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Pagination from "react-js-pagination";
 
 class Archive extends React.Component {
 
@@ -35,7 +35,7 @@ class Archive extends React.Component {
   var self = this;
   this.serverRequest = 
       axios
-        .get("./php/api/RestController.php?view=all")
+        .get("./php/api/posts/list/")
         .then(function(result) {
           result.data.Posts.reverse(); //Newest order
 

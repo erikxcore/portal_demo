@@ -2,7 +2,8 @@
 
 This project is for phase 1 of the internal facing portal. Phase 2 will involve a migration into a CMS system such as the Drupal based Open Atrium product. Migration should be fairly simple though may require the removal of React & JSON components in favor of a more database orientated approach.
 
-A simple REST web service (PHP) has been included to allow modification of the posts JSON file.
+A simple REST web service (PHP) has been included to allow modification of the posts JSON file.<br/>
+Composer has been added to handle autoloading for the GeoIP location service.<br/>
 
 This is based on a frontend skeleton using Gulp/Babel (ES 2015) + Browserify/SASS/Jasmine/PUG. Most likely Jasmine will not be used for this project.<br />
 Also included is lodash/jQuery/Bootstrap/Font Awesome<br />
@@ -53,5 +54,6 @@ gulp noes6 - builds everything from node_modules and source, doesn't use ES6
 
 Prerequisites:<br/>
 [Node/NPM](https://nodejs.org/en/)<br />
-[Git](https://github.com)
+[Git](https://github.com)<br/>
+[Composer](http://getcomposer.org/)
 <br/>
