@@ -7,7 +7,7 @@ class HeaderComponents extends React.Component {
   render(){
     return (
       <div>
-        <Weather />
+        <Weather apikey="e4c9d96c94ea0ba506fdbe243c18839d"/>
         <Time />
       </div>
     );
