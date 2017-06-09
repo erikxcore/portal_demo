@@ -9,11 +9,12 @@ import browserify from 'browserify';
 import babel from 'babelify';
 import sass from 'gulp-sass';
 import concat from 'gulp-concat';
+import replace from 'gulp-replace';
 import imagemin from 'gulp-imagemin';
 import del from 'del';
 import server from 'gulp-server-livereload';
 import pug from 'gulp-pug';
-
+import sassify from 'sassify';
 
 const dirs = {
   src: 'source',
@@ -53,6 +54,11 @@ gulp.task('bootstrap-js', () => { 
 
 gulp.task('icons', () => { 
     return gulp.src(`${dirs.nodeDir}/font-awesome/fonts/**`) 
+        .pipe(gulp.dest(`${dirs.dest}/fonts`)); 
+});
+
+gulp.task('weather_icons', () => { 
+    return gulp.src(`${dirs.nodeDir}/weather-icons/font/**`) 
         .pipe(gulp.dest(`${dirs.dest}/fonts`)); 
 });
 
@@ -100,7 +106,11 @@ gulp.task('babel', () => {
         debug: true,
       }).transform(babel, {
         presets: [ 'es2015', 'react']
-      }).exclude('_includes').bundle();
+      }).exclude('_includes').transform(sassify, {
+        'auto-inject': true, // Inject css directly in the code
+        base64Encode: false, // Use base64 to inject css
+        sourceMap: false // Add source map to the code
+      }).bundle();
     }))
     .pipe(buffer())
     //.pipe(sourcemaps.init({ loadMaps: true }))
@@ -109,9 +119,11 @@ gulp.task('babel', () => {
     .pipe(gulp.dest(`${dirs.dest}/js`));
 });
 
+//This is an annoying issue with the weathericons which is looking for fonts in a 'font' folder. A SASS file was also not provided.
 gulp.task('sass', () => {
   return gulp.src(paths.sass)
     .pipe(sass().on('error', sass.logError))
+    .pipe(replace('../font/weathericons', '../fonts/weathericons'))
     .pipe(gulp.dest(`${dirs.dest}/css`));
 });
 
@@ -194,9 +206,9 @@ gulp.task('webserver', ['watch:babel'], () => {
     }));
 });
 
-gulp.task('dirty_build', ['lodash','jquery','icons','bootstrap-icons','bootstrap-js','copy_html','copy_css','copy_js','copy_json','copy_php','copy_htaccess','sass', 'images']);
+gulp.task('dirty_build', ['lodash','jquery','icons','weather_icons','bootstrap-icons','bootstrap-js','copy_html','copy_css','copy_js','copy_json','copy_php','copy_htaccess','sass', 'images']);
 
-gulp.task('dirty_build_babel', ['icons','bootstrap-icons','copy_html','copy_json','copy_php','copy_htaccess','babel','sass','pug','images']);
+gulp.task('dirty_build_babel', ['icons','weather_icons','bootstrap-icons','copy_html','copy_json','copy_php','copy_htaccess','babel','sass','pug','images']);
 
 gulp.task('noes6', ['clean'], () => {
   gulp.start('dirty_build');

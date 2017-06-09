@@ -45,8 +45,8 @@ class Time extends React.Component {
   render(){
     return (
       <div className="time">
+        <span>{this.state.date}</span>
       	<span>{this.state.time}</span>
-      	<span>{this.state.date}</span>
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-/*
-main.temp,name
-*/
+
+require('../../sass/components/_weather.scss');
+
 
 class Weather extends React.Component {
   constructor(props) {
@@ -28,6 +28,8 @@ class Weather extends React.Component {
 	          
 	          if(long && lat){
 	          	self.findWeather(long,lat);
+	          }else{
+	          	console.log("There was an issue determining your location.");
 	          }
 	      });
   }
@@ -47,16 +49,87 @@ class Weather extends React.Component {
         		weatherIcon = result.data.weather.icon;
         	}
 
+        	weatherIcon = self.determineIcon(weatherIcon);
+
         	self.setState({
-                temp: parseInt(result.data.main.temp,10),
+                temp: parseInt(result.data.main.temp,10)+'°',
                 icon_id: weatherIcon
             });
             
         });
   }
 
-  provideIcon(icon_id){
-  	
+  determineIcon(icon_id){
+        	switch(icon_id){
+        		//Clear Sky
+        		case "01d":
+        			icon_id = "wi-day-sunny";
+        		break;
+        		case "01n":
+        			icon_id = "wi-night-clear";
+        		break;
+        		//Few Clouds
+        		case "02d":
+        			icon_id = "wi-day-cloudy";
+        		break;
+        		case "02n":
+        			icon_id = "wi-night-alt-cloudy";
+        		break;
+        		//Scattered Clouds
+        		case "03d":
+        			icon_id = "wi-cloud";
+        		break;
+        		case "03n":
+        			icon_id = "wi-cloud";
+        		break;
+        		//Broken Clouds
+        		case "04d":
+        			icon_id = "wi-cloudy";
+        		break;
+        		case "04n":
+        			icon_id = "wi-cloudy";
+        		break;
+        		//Shower Rain
+        		case "09d":
+        			icon_id = "wi-day-showers";
+        		break;
+        		case "09n":
+        			icon_id = "wi-night-alt-showers";
+        		break;
+        		//Rain
+        		case "10d":
+        			icon_id = "wi-day-rain";
+        		break;
+        		case "10n":
+        			icon_id = "wi-night-alt-rain";
+        		break;
+        		//Thunderstorm
+        		case "11d":
+        			icon_id = "wi-day-storm-showers";
+        		break;
+        		case "11n":
+        			icon_id = "wi-night-storm-showers";
+        		break;
+        		//Snow
+        		case "13d":
+        			icon_id = "wi-day-snow";
+        		break;
+        		case "13n":
+        			icon_id = "wi-night-snow";
+        		break;
+        		//Mist
+        		case "50d":
+        			icon_id = "wi-day-haze";
+        		break;
+        		case "50n":
+        			icon_id = "wi-night-cloudy-windy";
+        		break;
+
+        		default:
+        		icon_id = 'wi-na';
+        	}
+
+  	return icon_id;
   }
 
   componentWillUnmount(){
@@ -71,8 +144,7 @@ class Weather extends React.Component {
     return (
       <div className="weather">
       	<span>{this.state.temp}</span>
-      		<br/>
-      	<span>{this.state.icon_id}</span>
+        <i className={`wi ${this.state.icon_id}`}/>
       </div>
     );
   }
