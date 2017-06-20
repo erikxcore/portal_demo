@@ -11,6 +11,7 @@ Yarn has been included for the option to *not* use NPM.<br />
 
 For deployment, the /build folder can be used directly. Or, if preferred, the project can be cloned and then 'npm start' may be ran to generate a new 'build'.
 <br />
+If pulling down this project on a new machine, be sure to run npm install and install Composer to run php composer.phar install for the PHP required assets.
 
 There are two ways to use this:<br />
 <h4>Method 1 (Retains /build)</h4>
