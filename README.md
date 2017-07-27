@@ -1,11 +1,11 @@
-<h2>Mediacom Portal</h2>
+<h2>Portal Demo</h2>
 
-This project is for phase 1 of the internal facing portal. Phase 2 will involve a migration into a CMS system such as the Drupal based Open Atrium product. Migration should be fairly simple though may require the removal of React & JSON components in favor of a more database orientated approach.
+This unbranded project is for phase 1 of an internal facing portal. Phase 2 will involve a migration into a CMS system such as the Drupal based Open Atrium product. Migration should be fairly simple though may require the removal of React & JSON components in favor of a more database orientated approach.
 
-A simple REST web service (PHP) has been included to allow modification of the posts JSON file.<br/>
+A simple REST web service (PHP) has been included to allow modification of the posts JSON file. Eventually would like to move to either SQLite or some kind of NoSQL DB.<br/>
 Composer has been added to handle autoloading for the GeoIP location service.<br/>
 
-This is based on a frontend skeleton using Gulp/Babel (ES 2015) + Browserify/SASS/Jasmine/PUG. Most likely Jasmine will not be used for this project.<br />
+This is based on a frontend skeleton using Gulp/Babel (ES 2015) + Browserify/SASS/Jasmine/PUG.<br />
 Also included is lodash/jQuery/Bootstrap/Font Awesome<br />
 Yarn has been included for the option to *not* use NPM.<br />
 

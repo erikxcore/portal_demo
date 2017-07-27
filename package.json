@@ -1,7 +1,7 @@
 {
-  "name": "mediacom_portal",
+  "name": "portal_demo",
   "version": "1.0.0",
-  "description": "Phase 1 release of the Mediacom internal portal",
+  "description": "Phase 1 release of an internal portal",
   "main": "build/index.html",
   "scripts": {
     "start": "npm install && gulp && composer install",
@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://git.mediacomcorp.com/scm/oss/portal.git"
+    "url": "https://github.com/erikxcore/portal_demo"
   },
   "devDependencies": {
     "axios": "^0.16.2",
